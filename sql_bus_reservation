@@ -1,0 +1,54 @@
+CREATE TABLE admin
+(
+  admin_name VARCHAR(64) ,
+  admin_id INT ,
+  admin_password VARCHAR(128) ,
+  admin_email VARCHAR(64) ,
+  admin_phno INT ,
+  PRIMARY KEY (admin_id)
+);
+
+CREATE TABLE customer
+(
+  customer_id INT ,
+  customer_name VARCHAR(64) ,
+  customer_password VARCHAR(128) ,
+  customer_email VARCHAR(64) ,
+  customer_phno BIGINT ,
+  location VARCHAR(64) ,
+  PRIMARY KEY (customer_id)
+);
+
+CREATE TABLE destination
+(
+  destination_id INT ,
+  destination_set_name VARCHAR(64) ,
+  PRIMARY KEY (destination_id)
+);
+
+CREATE TABLE bus
+(
+  bus_name VARCHAR(64) ,
+  bus_id INT ,
+  bus_capacity INT ,
+  bus_source INT ,
+  current_capacity INT ,
+  admin_id INT,
+  destination_id INT ,
+  PRIMARY KEY (bus_id),
+  FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  FOREIGN KEY (destination_id) REFERENCES destination(destination_id),
+  FOREIGN KEY (bus_source) REFERENCES destination(destination_id)
+);
+
+CREATE TABLE ticket
+(
+  ticket_id VARCHAR(64) ,
+  price INT ,
+  no_of_seats INT ,
+  customer_id INT ,
+  bus_id INT ,
+  PRIMARY KEY (ticket_id),
+  FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+  FOREIGN KEY (bus_id) REFERENCES bus(bus_id)
+);

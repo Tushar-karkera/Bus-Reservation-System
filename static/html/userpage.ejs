@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    </link>
+    <link rel="stylesheet" href="../css/userpage.css">
+    <link rel="stylesheet" href="../css/switch.css">
+    <script>
+        async function openCity(evt, cityName) {
+
+
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+
+        }
+        function refresh() {
+            document.location.reload()
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'add')">RESERVE TICKET</button>
+        <button class="tablinks" onclick="openCity(event, 'delete')">DELETE TICKET</button>
+        <button class="tablinks" onclick="openCity(event, 'display_bus')">DISPLAY BUS</button>
+        <button class="tablinks" onclick="openCity(event, 'display_ticket')">DISPLAY TICKET</button>
+        <a href="/"><button class="tablinks">LOG OUT</button></a>
+    </div>
+
+    <!-- reserve seat -->
+    <div id="add" class="tabcontent">
+        <div class="container">
+            <div class="panel panel-primary dialog-panel">
+                <div class="panel-heading">
+                    <h5>BUS RESERVATION FORM</h5>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal"  method="post" action="/book">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_email">DESTINATION</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-11">
+                                        <input class="form-control" id="id_email"
+                                            placeholder="place where you wanna go " type="text" name="dest"></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_checkin">CHECKIN</label>
+                            <div class="col-md-8">
+                                <div class="col-md-3">
+                                    <div class="form-group internal input-group">
+                                        <input class="form-control datepicker" id="id_checkin" name="date"></input>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_checkin">BUS NAME</label>
+                            <div class="col-md-8">
+                                <div class="col-md-3">
+                                    <div class="form-group internal input-group">
+                                        <input class="form-control datepicker" id="id_checkin" name="bus_name"></input>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_checkin">NUMBER OF SEATS</label>
+                            <div class="col-md-8">
+                                <div class="col-md-3">
+                                    <div class="form-group internal input-group">
+                                        <input class="form-control datepicker" type="number" id="id_checkin" name="seats"></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type='hidden' name="username" id="hidden1" value=""/>
+                        <input type="hidden" name="Passwords" id="hidden2" value="" />
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-3">
+                                <button class="btn-lg btn-primary" type="submit">Request Reservation</button>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- delete reservation -->
+    <div id="delete" class="tabcontent">
+
+        <div class="container">
+            <div class="panel panel-primary dialog-panel">
+                <div class="panel-heading">
+                    <h5>BUS RESERVATION DELETE</h5>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="post" action="/delete_ticket">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_checkin">Ticket Number</label>
+                            <div class="col-md-8">
+                                <div class="col-md-3">
+                                    <div class="form-group internal input-group">
+                                        <input class="form-control datepicker" id="id_checkin" name="ticket_id"></input>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type='hidden' name="username" id="hidden3" value=""/>
+                        <input type="hidden" name="Passwords" id="hidden4" value="" />
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-3">
+                                <button class="btn-lg btn-primary" type="submit">DELETE RESERVATION</button>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- display ticket -->
+    <div id="display_ticket" class="tabcontent">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>TICKET NUMBER</th>
+                    <th>BUS Name</th>
+                    <th>BUS DESTINATION</th>
+                    <th>PRICE</th>
+                </tr>
+            </thead>
+            <% record.forEach(function(row){%>
+                <% if(row.ticket_id){%>
+                    <tr>
+                        <td>
+                            <%=row.ticket_id %>
+                        </td>
+                        <td>
+                            <%=row.booked_bus_name %>
+                        </td>
+                        <td>
+                            <%=row.destination_set_name %>
+                        </td>
+                        <td>
+                            <%=row.price %>
+                        </td>
+                    </tr>
+                <%}%>
+            <%}) %>
+        </table>
+    </div>
+
+    <!-- display the buses -->
+    <div id="display_bus" class="tabcontent">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>BUS ID</th>
+                    <th>BUS Name</th>
+                    <th>BUS SOURCE</th>
+                    <th>BUS DESTINATION</th>
+                    <th>BUS CAPACITY</th>
+                    <th>CURRENT BUS CAPACITY</th>
+                </tr>
+            </thead>
+            <% record.forEach(function(row){%>
+                <% if(row.bus_name){%>
+                    <tr>
+                        <td>
+                            <%=row.bus_id %>
+                        </td>
+                        <td>
+                            <%=row.bus_name %>
+                        </td>
+                        <td>
+                            <%=row.source_name %>
+                        </td>
+                        <td>
+                            <%=row.destination_name %>
+                        </td>
+                        <td>
+                            <%=row.bus_capacity %>
+                        </td>
+                        <td>
+                            <%=row.current_capacity %>
+                        </td>
+                    </tr>
+                <%}%>
+            <%}) %>
+        </table>
+    </div>
+    <script>
+        let names = '<%-username%>';
+        let passws = '<%-passwords%>';
+        hiddens1 = document.getElementById('hidden1');
+        hiddens1.value = names
+
+        hiddens2 = document.getElementById('hidden2');
+        hiddens2.value = passws
+
+        hiddens3 = document.getElementById('hidden3');
+        hiddens3.value = names
+
+        hiddens4 = document.getElementById('hidden4');
+        hiddens4.value = passws
+        // console.log('got password :'+passw)
+        if ('<%-alert%>' != 'null') {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: '<%-alert%>'
+            })
+        }
+    </script>
+</body>
+
+</html>

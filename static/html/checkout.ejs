@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../css/checkout.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/qrcode.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div id="qrcode">
+            </div>
+            <form method="post" action="/customer">
+                <input type='hidden' name="name" id="hidden1" value="" />
+                <input type="hidden" name="password" id="hidden2" value='<%=passwords%>'/><button class="proceed"
+                    type="submit"><svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                    </svg></button>
+            </form>
+        </div>
+        <div class="receipt">
+            <div class="col">
+                <p>COST :<h2 class="cost">$<%=cost%></h2><br></p>
+                <p>NAME :<h2 class="seller"><%=name%></h2></p>
+            </div>
+            <div class="col">
+                <p>RESERVED TICKET:</p>
+                <p class="bought-items description">please take a print of this ticket!</p>
+                <p class="bought-items price">TRAVEL AGAIN FOR DISCOUNTED PRICES</p><br>
+            </div>
+            <p class="ending">This information will be sended to your email</p>
+        </div>
+    </div>
+</body>
+<script>
+    let names = '<%-name%>';
+    hiddens1 = document.getElementById('hidden1');
+    hiddens1.value = names
+
+
+    var qrcode = new QRCode(document.getElementById('qrcode'))
+    function generator() {
+        var data = 'ticket id :'+'<%-ticket_id%>'+'; name : '+'<%-name%>'+'; cost : '+'<%-cost%>'
+        qrcode.makeCode(data)
+    }
+    generator()
+</script>
+
+</html>

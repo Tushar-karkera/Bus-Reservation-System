@@ -1,0 +1,341 @@
+<html>
+
+<head>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/userpage.css">
+    <link rel="stylesheet" type="text/css" href="../css/switch.css">
+
+    <script>
+        async function openCity(evt, cityName) {
+           
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+
+        }
+
+    </script>
+</head>
+
+<body>
+  
+    <div class="image"></div>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'add')">ADD BUS</button>
+        <button class="tablinks" onclick="openCity(event, 'delete')">DELETE BUS</button>
+        <button class="tablinks" onclick="openCity(event, 'display_bus')">DISPLAY BUS</button>
+        <button class="tablinks" onclick=" openCity(event, 'display_user')">DISPLAY USER</button>
+        <button class="tablinks" onclick=" openCity(event, 'display_destination')">DISPLAY DESTINATION</button>
+        <a href="/"><button class="tablinks">LOG OUT</button></a>
+    </div>
+
+    <!-- Tab content -->
+    <div id="add" class="tabcontent">
+        <div class="container">
+            <div class="panel panel-primary dialog-panel">
+                <div class="panel-heading">
+                    <h5>ADD BUS</h5>
+                </div>
+
+                <div class="panel-body">
+
+                    <form class="form-horizontal" action="/addbus" method="post">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_email">Bus Name</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-11">
+                                        <input class="form-control" id="id_email" placeholder="Enter Bus Name"
+                                            type="text" name="name"></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_email">Source Name</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-11">
+                                        <input class="form-control" id="id_email"
+                                            placeholder="place where you wanna go " type="text" name="source"></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_email">Destination Name</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-11">
+                                        <input class="form-control" id="id_email"
+                                            placeholder="place where you wanna go " type="text"
+                                            name="destination"></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_checkin">Bus Id</label>
+                            <div class="col-md-8">
+                                <div class="col-md-3">
+                                    <div class="form-group internal input-group">
+                                        <input class="form-control datepicker" id="id_checkin" name="bus_id"></input>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_checkin">Capacity</label>
+                            <div class="col-md-8">
+                                <div class="col-md-3">
+                                    <div class="form-group input-group">
+                                        <input class="form-control datepicker" id="id_checkin" name="capacity"></input>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-resize-full"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-3">
+                                <button class="btn-lg btn-primary" type="submit">ADD BUS</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn-lg btn-danger" style="float:right" type="submit">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- delete tab -->
+    <div id="delete" class="tabcontent">
+        <div class="container">
+            <div class="panel panel-primary dialog-panel">
+                <div class="panel-heading">
+                    <h5>DELETE BUS</h5>
+                </div>
+
+                <div class="panel-body">
+
+                    <form class="form-horizontal" action="/deletebus" method="post">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_email">Bus Name</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-11">
+                                        <input class="form-control" id="id_email" placeholder="Enter Bus Name"
+                                            type="text" name="name"></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="id_checkin">Bus Id</label>
+                            <div class="col-md-8">
+                                <div class="col-md-3">
+                                    <div class="form-group internal input-group">
+                                        <input class="form-control datepicker" id="id_checkin" name="bus_id"></input>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-3">
+                                <button class="btn-lg btn-primary" type="submit">DELETE BUS</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn-lg btn-danger" style="float:right" type="submit">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- display bus -->
+    <div id="display_bus" class="tabcontent">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>BUS ID</th>
+                    <th>BUS Name</th>
+                    <th>BUS SOURCE </th>
+                    <th>BUS DESTINATION </th>
+                    <th>BUS CAPACITY</th>
+                    <th>CURRENT BUS CAPACITY</th>
+                </tr>
+            </thead>
+            <% bus.forEach(function(row){%>
+                <% if(row.bus_name){%>
+                    <tr>
+                        <td>
+                            <%=row.bus_id %>
+                        </td>
+                        <td>
+                            <%=row.bus_name %>
+                        </td>
+                        <td>
+                            <%=row.source_name %>
+                        </td>
+                        <td>
+                            <%=row.destination_name %>
+                        </td>
+                        <td>
+                            <%=row.bus_capacity %>
+                        </td>
+                        <td>
+                            <%=row.current_capacity %>
+                        </td>
+                    </tr>
+                <%}%>
+            <%}) %>
+        </table>
+    </div>
+
+
+    <!-- create user -->
+    <div id="create" class="tabcontent">
+        <div class="container">
+            <div class="panel panel-primary dialog-panel">
+                <div class="panel-heading">
+                    <h5>CREATE USER</h5>
+                </div>
+
+                <div class="panel-body">
+
+                    <form class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="username">USER Name</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-11">
+                                        <input class="form-control" id="username" placeholder="Enter User Name"
+                                            type="text" name="username"></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-md-offset-2" for="password">Bus Id</label>
+                            <div class="col-md-8">
+                                <div class="col-md-3">
+                                    <div class="form-group internal input-group">
+                                        <input class="form-control" id="password" name="password"
+                                            type="password"></input>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-3">
+                                <button class="btn-lg btn-primary" type="submit">CREATE USER</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn-lg btn-danger" style="float:right" type="submit">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- display user -->
+    <div id="display_user" class="tabcontent">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>customer id</th>
+                    <th>username</th>
+                    <th>customer email</th>
+                    <th>cutomer phone number</th>
+                </tr>
+            </thead>
+            <% record.forEach(function(row){%>
+                <%if(row.customer_id){%>
+                    <tr>
+                        <td>
+                            <%=row.customer_id %>
+                        </td>
+                        <td>
+                            <%=row.customer_name %>
+                        </td>
+                        <td>
+                            <%=row.customer_email %>
+                        </td>
+                        <td>
+                            <%=row.customer_phno %>
+                        </td>
+                    </tr>
+                <%}%>
+            <%}) %>
+        </table>
+    </div>
+
+    <!-- display destination -->
+    <div id="display_destination" class="tabcontent">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>destination id</th>
+                    <th>destination name</th>
+                </tr>
+            </thead>
+            <%record.forEach(function(row){%>
+                <%if(row.destination_id){%>
+                    <tr>
+                        <td>
+                            <%=row.destination_id %>
+                        </td>
+                        <td>
+                            <%=row.destination_set_name %>
+                        </td>
+                        
+                    </tr>
+                <%}%>
+            <%}) %>
+        </table>
+    </div>
+</body>
+
+</html>

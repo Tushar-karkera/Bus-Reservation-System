@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 id="heading">BUS RESERVATION SYSTEM</h2>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="/customer" method="post">
+                <h1>CUSTOMER</h1>
+                <span>or use your credentials to login</span>
+                <input type="text" placeholder="name" name="name" />
+                <input type="password" placeholder="Password" name="password" />
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="/admin" method="post">
+                <h1>Login</h1>
+                <span>or use your account</span>
+                <input type="text" placeholder="Name" name="name" />
+                <input type="password" placeholder="Password" name="password" />
+                <!-- <a href="#">Forgot your password?</a> -->
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Login as Admin</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Customer!</h1>
+                    <p>login to book reservations at cheaper cost from us !!!</p>
+                    <button class="ghost" id="signUp">Login as Customer</button>
+                    <a href="/create"><button class="ghost" id="signUp">signup with us</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if ('<%-alert%>' != 'null') {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: '<%-alert%>'
+            })
+        }
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+
+        
+    </script>
+
+</body>
+
+</html>

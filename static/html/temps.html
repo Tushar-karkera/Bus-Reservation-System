@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    </link>
+    <link rel="stylesheet" href="../css/userpage.css">
+    <style>
+        .select{
+            margin-bottom: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="select">
+        <div class="form-group">
+            <div class="col ">
+                <button class="btn-lg btn-success" style="float:right" type="submit">ADD BUS</button>
+            </div>
+            <div class="col">
+                <button class="btn-lg btn-success" style="float:right" type="submit">DELETE BUS</button>
+            </div>
+            <div class="col">
+                <button class="btn-lg btn-success" style="float:right" type="submit">DISPLAY BUS DETAILS</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="panel panel-primary dialog-panel">
+            <div class="panel-heading">
+                <h5>ADMIN PAGE</h5>
+            </div>
+
+            <div class="panel-body">
+
+                <form class="form-horizontal" role="form">
+                    
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-md-offset-2" for="id_email">Bus Name</label>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-11">
+                                    <input class="form-control" id="id_email" placeholder="Enter Bus Name" type="text" name="name"></input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-md-offset-2" for="id_email">Source</label>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-11">
+                                    <input class="form-control" id="id_email" placeholder="place where you wanna go " type="text" name="source"></input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-md-offset-2" for="id_email">Destination</label>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-11">
+                                    <input class="form-control" id="id_email" placeholder="place where you wanna go " type="text" name="destination"></input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-md-offset-2" for="id_checkin">Bus Id</label>
+                        <div class="col-md-8">
+                            <div class="col-md-3">
+                                <div class="form-group internal input-group">
+                                    <input class="form-control datepicker" id="id_checkin" name="bus_id"></input>
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-md-offset-2" for="id_checkin">Capacity</label>
+                        <div class="col-md-8">
+                            <div class="col-md-3">
+                                <div class="form-group input-group">
+                                    <input class="form-control datepicker" id="id_checkin" name="capacity"></input>
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-resize-full"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-3">
+                            <button class="btn-lg btn-primary" type="submit">ADD BUS</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn-lg btn-danger" style="float:right" type="submit">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.multiselect').multiselect();
+            $('.datepicker').datepicker();
+        });
+
+
+    </script>
+</body>
+
+</html>
